@@ -2,6 +2,7 @@
 
 Hello. This is Sofia Dias's and Christine Choi's final project for ME 405. 
 The Romi Robot must follow a line on an arena. The robot uses a proportional control to follow the lines smoothly. The arena had curves, sharp turns, and a box obstacle.
+The final time recorded time for this model was 50 seconds for the whole arena. 
 
 This Romi uses:
 - [Romi Robot Kit](https://www.pololu.com/product/4022)
@@ -30,7 +31,7 @@ More about our implementation below
 - Applies a moving average filter to smooth error and improve stability in line detection. This is applied to the derivative
 ## Object detection with bump sensor
 - Equipped with a bumper sensor that triggers when a collision occurs (in this case, a box in the middle of the track)
-- The robot backs up and makes a semi circle around the box
+- The robot backs up and makes a semi-circle around the box
 
 #  **Feedback**
 ## IMU Integration for Navigation
@@ -57,6 +58,9 @@ More about our implementation below
 A way ensure that the robot can follow the line is to have the both sides of the array equal. It is not enough to attempt to keep a line inside the middle since the track has parts of the line being dashed or perpendicular crossing. Ensuring that the left part of the array is always seeing something equal to the right side is part of the error correction. 
 We implemented this logic with a weighted array, multiplying all the values with [-4, -3, -2, -1, 1, 2, 3, 4] and took the sum of that as the error. If the left and right were matching, the error is 0. Else, the error is weighted on how much difference there is between the left and right sensors. 
 This success is highly dependent on lighting and thresholding. If values are inconsistent, we found success in adding a line of tape to shield the line sensor from the room's light conditions. 
+## Line Sensor Calibration  
+The IR lights can be dimmed by sending a low pulse within a frame of time. More information can be found in the [product page](https://www.pololu.com/product/3672).
+For our purposes, 50% dimmed lights were sufficient. 
 
 # PID calibration tips
 **Start with Proportional**
