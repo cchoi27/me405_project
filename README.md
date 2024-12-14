@@ -50,6 +50,9 @@ More about our implementation below
 6. Compile and upload the code to the microcontroller.
 7. Place the robot on the track and initiate line-following mode.
 
+![alt text](https://github.com/cchoi27/me405_project/blob/main/me_405_sensors.png)
+
+
 # Line Following Logic
 A way ensure that the robot can follow the line is to have the both sides of the array equal. It is not enough to attempt to keep a line inside the middle since the track has parts of the line being dashed or perpendicular crossing. Ensuring that the left part of the array is always seeing something equal to the right side is part of the error correction. 
 We implemented this logic with a weighted array, multiplying all the values with [-4, -3, -2, -1, 1, 2, 3, 4] and took the sum of that as the error. If the left and right were matching, the error is 0. Else, the error is weighted on how much difference there is between the left and right sensors. 
