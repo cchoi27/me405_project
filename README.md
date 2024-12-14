@@ -10,6 +10,7 @@ This Romi uses:
 - [Bump Sensor](https://www.pololu.com/product/1403)
 
 View the [Demo](https://youtu.be/HECtpBxoPgs) !!
+![Video Title](https://youtu.be/HECtpBxoPgs?si=3qi8hOCIg7ycntWO)
 
 ![alt text](https://github.com/cchoi27/me405_project/blob/main/IMG_6417.jpg)
 
