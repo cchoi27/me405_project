@@ -9,8 +9,7 @@ This Romi uses:
 - IMU 
 - [Bump Sensor](https://www.pololu.com/product/1403)
 
-View the [Demo](https://youtu.be/HECtpBxoPgs) !!
-[![ME405 Romi line following] (https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://youtu.be/HECtpBxoPgs?si=3qi8hOCIg7ycntWO)
+View the [Demo](https://youtu.be/HECtpBxoPgs) !
 
 ![alt text](https://github.com/cchoi27/me405_project/blob/main/IMG_6417.jpg)
 
