@@ -56,16 +56,19 @@ We implemented this logic with a weighted array, multiplying all the values with
 **Start with Proportional**
 -  If the wheels aren't changing fast enough, increase KP
 -  If the wheels seem to be overshooting, decrease KP
+  
 **Integral**
 - This is the sum of accumulated errors
 - This can be adjusted to be the moving average of errors instead. This may be more useful in a line following configuration
 - If the system's outputs seem to be "degrading" the longer the system runs, increase KI
-- NOTE: We did not have to use a KI value 
+- NOTE: We did not have to use a KI value
+
 **Derivative**
 - This is the rate of change in error
 - A moving average can also be used to incorporate past delta errors
 - This will put more influence on sudden  changes, such as sharp turns and squiggles
 - NOTE: Our system had a very influential KD
+
 **Other controls**
 In our system, more adjustments were added beyond PID, such as feedforward adjustments. These are added through observation. For example, due to the K constant value, the opposing motor would never drive negative, which was crucial for sharp turns. Depending on the polarity of the adjusted error, the left or right motor would have an increased subtraction to allow for this correction. 
 
