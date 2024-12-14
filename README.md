@@ -11,6 +11,9 @@ This Romi uses:
 
 View the [Demo](https://youtu.be/HECtpBxoPgs) !!
 
+![alt text](https://github.com/cchoi27/me405_project/blob/main/IMG_6417.jpg)
+
+
 
 
 # **Line Following Mechanism**
