@@ -2,8 +2,7 @@ import time
 import pyb
 from pyb import Pin, ADC
 
-
-
+# for line sensor
 class QTRXSensorArray:
     # init
     def __init__(self, control_odd, control_even, sensor_pins):
@@ -21,7 +20,7 @@ class QTRXSensorArray:
     def change_threshold(self, num):
         self.threshold = num
 
-                    
+    # dim the leds on array
     def dim_leds(self):
         for i in range (15):
             self.control_odd.low()
@@ -34,15 +33,14 @@ class QTRXSensorArray:
     def read_bin(self):
         sensor_values = [(1 if sensor.read()>self.threshold else 0) for sensor in self.sensors]
         print(f'{sensor_values}')
-        
+
+    # read from adc
     def read_adc(self):
-        
         sensor_values = [sensor.read() for sensor in self.sensors]
         print(sensor_values)
         bin_values = [(1 if sensor_val>self.threshold else 0) for sensor_val in sensor_values]
         print(bin_values)
 
-        
     def print_sensors_test_bin(self):
         self.dim_leds()
         self.changing_to_outputs()
@@ -71,9 +69,9 @@ class QTRXSensorArray:
         self.control_even.low()
         calibrated = [a - b for a, b in zip(sensor_values, self.sum)]
         return calibrated, sensor_values
-        
+
+    #actually the read_sensor
     def read_sensors(self):
-        #actually the read_sensor
         self.dim_leds()
         self.changing_to_outputs()
         self.changing_to_inputs()
@@ -82,9 +80,9 @@ class QTRXSensorArray:
         self.control_odd.low()
         self.control_even.low()
         return sensor_values
-        
+
+    #changes to outputs and drives it HIGH
     def changing_to_outputs(self):
-        #changes to outputs and drives it HIGH
             self.sensors = [(Pin(pin, Pin.OUT)) for pin in self.pins]
             for sensor in self.sensors:
                 sensor.value(1)
