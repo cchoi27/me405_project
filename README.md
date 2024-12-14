@@ -6,7 +6,7 @@ The Romi Robot must follow a line on an arena. The robot uses a proportional con
 This Romi uses:
 - [Romi Robot Kit](https://www.pololu.com/product/4022)
 - [8-Channel QTRX Sensor Array](https://www.pololu.com/product/3672)
-- IMU
+- IMU 
 - [Bump Sensor](https://www.pololu.com/product/1403)
 
 View the [Demo](https://youtu.be/HECtpBxoPgs) !!
