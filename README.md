@@ -28,10 +28,10 @@ View the [Demo](https://youtu.be/HECtpBxoPgs)
 - Equipped with a bumper sensor that triggers when a collision occurs (in this case, a box in the middle of the track)
 - The robot backs up and makes a semi circle around the box
 
-#**Feedback**
-##IMU Integration for Navigation
+#  **Feedback**
+## IMU Integration for Navigation
 - Uses a BNO055 IMU sensor to measure heading and maintain orientation during recovery and final maneuvers
 - Implements heading error correction to realign the robot's direction
-##Encoder Feedback for Position Tracking
+## Encoder Feedback for Position Tracking
 - Tracks wheel rotations using encoders to measure distance traveled
 - Employs encoder data to determine the completion of recovery and navigation maneuvers
