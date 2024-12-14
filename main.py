@@ -40,10 +40,8 @@ def bumpped_flag_toggle(the_pin):
     print("ouch")
     bump_flag = 1
 
-
 button_int = ExtInt(Pin.cpu.C7, ExtInt.IRQ_FALLING,
 Pin.PULL_UP, bumpped_flag_toggle)
-
 
 motor = 1
 # Switch to enable/disable for motors
