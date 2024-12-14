@@ -38,7 +38,7 @@ More about our implementation below
 - Employs encoder data to determine the completion of recovery and navigation maneuvers
 
 
-#Build Instructions with a Romi
+# Build Instructions with a Romi
 1. Calibrate the QTRX sensor array. Record an all-white array. Add this all-white array to the sensor class. Now whenever the sensors are read, the offset will be given. This is usually more accurate than the pure value.
 2. Observe for a threshold for black lines. To simplify the PID controller, these analog values are turned to binary.
 3. Adjust encoder values. These will differ depending on the motor and battery voltage level. A closed-loop class is included to ensure consistent results.
@@ -47,12 +47,12 @@ More about our implementation below
 6. Compile and upload the code to the microcontroller.
 7. Place the robot on the track and initiate line-following mode.
 
-#Line Following Logic
+# Line Following Logic
 A way ensure that the robot can follow the line is to have the both sides of the array equal. It is not enough to attempt to keep a line inside the middle since the track has parts of the line being dashed or perpendicular crossing. Ensuring that the left part of the array is always seeing something equal to the right side is part of the error correction. 
 We implemented this logic with a weighted array, multiplying all the values with [-4, -3, -2, -1, 1, 2, 3, 4] and took the sum of that as the error. If the left and right were matching, the error is 0. Else, the error is weighted on how much difference there is between the left and right sensors. 
 
 
-#PID calibration tips
+# PID calibration tips
 **Start with Proportional**
 -  If the wheels aren't changing fast enough, increase KP
 -  If the wheels seem to be overshooting, decrease KP
