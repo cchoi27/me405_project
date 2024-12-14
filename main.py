@@ -25,6 +25,7 @@ prev_right = 10
 MOVING_AVERAGE_WINDOW = 2
 average_buffer = [0] * MOVING_AVERAGE_WINDOW
 
+# Returns moving average
 def moving_average(new_value):
     global average_buffer
     average_buffer.pop(0)
@@ -33,6 +34,7 @@ def moving_average(new_value):
 
 bump_flag = 0
 finish_flag = 0
+# If the bump sensor was pressed, set bump_flag = 1
 def bumpped_flag_toggle(the_pin):
     global bump_flag
     print("ouch")
@@ -44,6 +46,7 @@ Pin.PULL_UP, bumpped_flag_toggle)
 
 
 motor = 1
+# Switch to enable/disable for motors
 def toggle_motors(the_pin):
     global motor
     
@@ -60,6 +63,7 @@ def toggle_motors(the_pin):
 button = ExtInt(Pin.cpu.C13, ExtInt.IRQ_FALLING,
 Pin.PULL_NONE, toggle_motors)
 
+# returns line following average using line sensor weights
 def line_following_average(qtr, motor_l, motor_r):
     
     global prev_error, prev_right_error, prev_left, prev_right
@@ -142,8 +146,7 @@ def line_following_average(qtr, motor_l, motor_r):
         
     prev_error = adjusted
 
-
-
+# for handling bumping
 def bumped(motor_l, motor_r, imu):
     global bump_flag, finish_flag
     print("bump")    
@@ -212,14 +215,13 @@ i2c = I2C(1)
 imu = BNO055(i2c) 
 
 if __name__ == '__main__':
-    
-
 
     i2c = I2C(1)  
     imu = BNO055(i2c) 
     motor_r.enable()
     motor_l.enable()
-    
+
+    # set up line sensor
     qtr = QTRXSensor.QTRXSensorArray(control_odd = Pin.cpu.B7, control_even=Pin.cpu.B13, sensor_pins=[Pin.cpu.C3, Pin.cpu.C2, Pin.cpu.A4, Pin.cpu.A6,  Pin.cpu.A7,  Pin.cpu.B1, Pin.cpu.C5,  Pin.cpu.C4])
 
     qtr.change_threshold(1700)
@@ -231,9 +233,11 @@ if __name__ == '__main__':
 
     time.sleep(1)
     while True:
+        # if bump was true
         if (bump_flag == 1):
             bumped(motor_l, motor_r, imu, qtr)
             encoder_r.zero()
+        # if finished
         if  (finish_flag == 1):
             encoder_r.update()       
             pos =  encoder_r.get_position()   
